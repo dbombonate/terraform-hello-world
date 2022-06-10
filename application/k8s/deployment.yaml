@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: API-Hello-World
+  name: api-hello-world
 spec:
   replicas: 5
   selector:
