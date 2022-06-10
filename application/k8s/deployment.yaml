@@ -1,0 +1,31 @@
+# Deployment web application API-Hello-World
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: API-Hello-World
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: api-hello
+  template:
+    metadata:
+      labels:
+        app: api-hello
+    spec:
+      containers:
+      - name: api-hello
+        image: danielbombonate/api-hello-world:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-hello-world
+spec:
+  selector:
+    app: api-hello
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: LoadBalancer
